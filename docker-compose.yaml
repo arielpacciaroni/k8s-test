@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  k8s-frontend:
+    container_name: k8s-frontend
+    ports:
+      - "3000:3000"
+    build:
+      context: ./frontend
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:4000
+    volumes:
+      - ./frontend:/usr/src/app
+      - ./frontend/node_modules:/usr/src/app/node_modules
+  k8s-backend:
+      container_name: k8s-backend
+      ports:
+        - "4000:4000"
+      build:
+        context: ./backend
+      environment:
+        - NODE_ENV=development
+        - PORT=4000
+      volumes:
+        - ./backend:/usr/src/app
+        - ./backend/node_modules:/usr/src/app/node_modules   

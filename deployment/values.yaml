@@ -1,0 +1,17 @@
+replicaCount: 1
+
+backend:
+  image:
+    repository: 091733698341.dkr.ecr.us-east-1.amazonaws.com/k8s-test-backend
+    tag: latest
+    pullPolicy: Always
+  nodeEnv: production
+  port: 4000
+
+frontend:
+  image:
+    repository: 091733698341.dkr.ecr.us-east-1.amazonaws.com/k8s-test-frontend
+    tag: latest
+    pullPolicy: Always
+  nodeEnv: production
+  port: 3000
